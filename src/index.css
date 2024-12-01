@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.custom-blob-shape {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  background: linear-gradient(45deg, rgba(1,186,91,0.1) 0%, rgba(59,130,246,0.1) 100%);
+  padding: 20px;
+}
+
+@keyframes morphBlob {
+  0% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+.custom-blob-shape {
+  animation: morphBlob 8s ease-in-out infinite;
+}
+
+.custom-blob-shape img {
+  border-radius: inherit;
+}
