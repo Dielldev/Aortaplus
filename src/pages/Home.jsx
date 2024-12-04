@@ -37,7 +37,7 @@ function Home() {
             <div className="w-full lg:w-1/2 lg:pr-12 mb-12 lg:mb-0 z-10">
                 <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in-up">
                     Kujdesi Juaj Shëndetësor është 
-                    <span className="text-[#01ba5b] animate-text-gradient">Prioriteti Ynë</span>
+                    <span className="text-[#01ba5b] animate-text-gradient ml-2">Prioriteti Ynë</span>
                 </h1>
                 <p className="text-gray-600 text-xl mb-8 leading-relaxed animate-fade-in-up delay-200">
                     Që nga viti 1996, Poliklinika Aorta Plus ofron shërbime mjekësore të specializuara me përkushtim të plotë ndaj shëndetit tuaj dhe familjes suaj.
