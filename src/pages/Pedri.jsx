@@ -1,26 +1,25 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import ServiceLayout from '../components/ServiceLayout';
 import pedri from '../assets/img/pedri.jpg';
 
 function Pedri() {
-    return (
-        <div>
-            <Navbar />
-            <div class="container flex flex-col mx-auto px-4 md:flex-row items-center  py-40">
-      <div class="w-full md:w-1/2 p-4">
-      <img src={pedri} alt="Medifamily" class="h-96 w-full object-cover rounded-lg" />
-    </div>
-  <div class="w-full md:w-1/2 p-4">
-    <h1 class="text-4xl text-blue-950 font-bold">Pediatria</h1>
-    <p class="text-gray-500 text-xl my-4">Poliknikia AortaPlus ofron Pediatrinë e cila është një degë e mjekësisë që fokusohet në kujdesin mjekësor të foshnjave, fëmijëve dhe adoleshentëve, zakonisht deri në moshën 18 vjeç, megjithëse në disa raste mund të shtrihet tek të rriturit e rinj. Pediatrit janë mjekë të specializuar në këtë fushë, duke adresuar çështjet unike shëndetësore, nevojat e zhvillimit dhe sëmundjet e pacientëve më të rinj.
-        
-    </p>
-    </div> 
-    </div>
-            <Footer />
-        </div>
-    );
+  return (
+    <ServiceLayout
+      eyebrow="Pediatria"
+      title={<>Pediatri <span className="text-mint">e kujdesshme.</span></>}
+      intro="Kujdes mjekësor i dedikuar për foshnjat, fëmijët dhe adoleshentët deri në 18 vjeç — me vëmendje për nevojat unike shëndetësore dhe zhvillimore të moshave të reja."
+      image={pedri}
+      points={[
+        { title: "Kontrollet e rritjes", desc: "Peshë, gjatësi dhe zhvillim psikomotor." },
+        { title: "Vaksinimi", desc: "Kalendari i plotë sipas protokolleve." },
+        { title: "Infeksionet e fëmijërisë", desc: "Diagnostikim i shpejtë dhe trajtim i butë." },
+        { title: "Ushqyerja", desc: "Këshillim për gjidhënien dhe dietën e fëmijës." },
+        { title: "Alergjitë & astma", desc: "Vlerësim dhe plan menaxhimi afatgjatë." },
+        { title: "Prindërit partnerë", desc: "Shpjegime të qarta dhe udhëzime për shtëpi." },
+      ]}
+      note="Ambient miqësor për fëmijë dhe qasje e qetë që e kthen vizitën te mjeku në përvojë pozitive."
+    />
+  );
 }
 
 export default Pedri;
