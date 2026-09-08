@@ -32,7 +32,7 @@ function ServiceLayout({ eyebrow, title, intro, image, points, note }) {
           <span className="inline-block bg-white border border-line rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-neutral-500 mb-5">
             {eyebrow}
           </span>
-          <h1 className="display-tight font-extrabold uppercase text-[11vw] sm:text-6xl lg:text-7xl max-w-4xl">
+          <h1 className="display-tight font-extrabold uppercase text-[10vw] sm:text-6xl lg:text-7xl max-w-4xl">
             {title}
           </h1>
           <p className="text-neutral-500 text-[16px] leading-relaxed max-w-2xl mt-5">{intro}</p>
