@@ -81,7 +81,7 @@ function Footer() {
 
         {/* Giant wordmark */}
         <div className="py-8 md:py-10 text-center select-none">
-          <h2 className="display-tight font-extrabold uppercase text-[15.5vw] lg:text-[11rem] leading-[0.85] tracking-tightest">
+          <h2 className="display-tight font-extrabold uppercase text-[12vw] sm:text-[13vw] lg:text-[11rem] leading-[0.85] tracking-tightest">
             Aorta<span className="text-mint">+</span>Plus
           </h2>
           <div className="mt-4 flex items-center justify-between text-[12px] font-semibold text-neutral-400 px-2">

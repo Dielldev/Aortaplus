@@ -108,7 +108,7 @@ function Home() {
       <section className="pt-28 sm:pt-32 pb-6">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between gap-4 mb-5">
-            <span className="inline-flex items-center gap-2 bg-white border border-line rounded-full px-4 py-2 text-[12px] font-bold">
+            <span className="inline-flex items-center gap-2 bg-white border border-line rounded-full px-4 py-2 text-[11px] sm:text-[12px] font-bold leading-snug">
               <span className="w-2 h-2 rounded-full bg-mint animate-pulse" />
               Poliklinika Premium · Ferizaj — Që nga 1996
             </span>
@@ -118,10 +118,12 @@ function Home() {
             </div>
           </div>
 
-          <h1 className="display-tight font-extrabold uppercase text-[14.5vw] sm:text-[11vw] lg:text-[7.2rem] xl:text-[8.2rem]">
+          <h1 className="display-tight font-extrabold uppercase text-[11vw] sm:text-[10vw] lg:text-[7.2rem] xl:text-[8.2rem]">
             Kujdes
             <br />
-            <span className="text-mint">Shëndetësor</span> Premium
+            <span className="text-mint">Shëndetësor</span>
+            <br />
+            Premium
           </h1>
 
           <div className="grid lg:grid-cols-[1.1fr_auto_1fr] gap-8 items-end mt-7">
@@ -176,7 +178,7 @@ function Home() {
           </div>
 
           {/* Hero image */}
-          <div className="relative mt-10 rounded-[28px] sm:rounded-[36px] overflow-hidden h-[380px] sm:h-[460px] lg:h-[520px] shadow-soft">
+          <div className="relative mt-10 rounded-[28px] sm:rounded-[36px] overflow-hidden h-[440px] sm:h-[460px] lg:h-[520px] shadow-soft">
             <img src={HeroImg} alt="Poliklinika Aorta Plus" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
             <div className="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-2 bg-white/95 backdrop-blur rounded-full pl-2 pr-5 py-2 text-[13px] font-bold shadow-pill">
@@ -267,9 +269,9 @@ function Home() {
               <Link
                 key={s.title}
                 to={s.to}
-                className="group bg-[#E9EBE9] hover:bg-ink hover:text-white rounded-[26px] py-10 px-6 text-center transition-all duration-300"
+                className="group bg-[#E9EBE9] hover:bg-ink hover:text-white rounded-[26px] py-8 sm:py-10 px-4 sm:px-6 text-center transition-all duration-300"
               >
-                <p className="font-extrabold text-xl sm:text-2xl tracking-tight">{s.title}</p>
+                <p className="font-extrabold text-[17px] sm:text-2xl tracking-tight leading-tight">{s.title}</p>
                 <p className="text-[13px] font-semibold text-neutral-500 group-hover:text-white/60 mt-1">{s.sub}</p>
                 <span className="inline-flex mt-4 text-[13px] font-bold items-center gap-1.5 opacity-0 group-hover:opacity-100 transition">
                   Shiko detajet
@@ -439,7 +441,7 @@ function Home() {
                   <option>Pediatri</option>
                   <option>Kardiologji</option>
                 </select>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <label className="flex items-center gap-2 bg-cream border border-line rounded-full px-5 py-4 text-[14px] font-semibold text-neutral-500 cursor-pointer">
                     <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                     <input required name="Data" type="date" className="bg-transparent outline-none w-full text-ink" />
@@ -480,7 +482,7 @@ function Home() {
           </div>
 
           {/* Contact mini strip */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
             {[
               { t: "Na telefononi", v: "044-172-429", href: "tel:044172429" },
               { t: "Email", v: "aortaplus@yahoo.com", href: "mailto:aortaplus@yahoo.com" },
@@ -489,7 +491,7 @@ function Home() {
             ].map((c) => (
               <a key={c.t} href={c.href} className="bg-white border border-line rounded-[22px] px-6 py-5 hover:shadow-soft hover:-translate-y-0.5 transition">
                 <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-neutral-400">{c.t}</p>
-                <p className="font-extrabold text-[16px] mt-1 truncate">{c.v}</p>
+                <p className="font-extrabold text-[16px] mt-1 break-words">{c.v}</p>
               </a>
             ))}
           </div>
