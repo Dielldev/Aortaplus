@@ -1,125 +1,122 @@
 import React from "react";
-import logo from "../assets/img/logo111.png"; 
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import logo from "../assets/img/logo111.png";
 
-    
-
+const LINKS = [
+  { label: "Ballina", id: "#top" },
+  { label: "Shërbimet", id: "#sherbimet" },
+  { label: "Rreth Nesh", id: "#rreth" },
+  { label: "Mjekët", id: "#mjeket" },
+  { label: "Lokacioni", id: "#rezervo" },
+];
 
 function Navbar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleScroll = (e, id) => {
+  const go = (e, id) => {
     e.preventDefault();
-    const element = document.querySelector(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    setOpen(false);
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 120);
+    } else {
+      document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMobileMenuOpen(false);
   };
 
-  React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      
-      if (mobileMenu && mobileMenuButton && 
-          !mobileMenu.contains(event.target) && 
-          !mobileMenuButton.contains(event.target)) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, []);
-
   return (
-    <nav className="bg-white fixed w-full z-50 shadow-md mb-2">
-    <div className="container mx-auto px-4">
-        <div class="flex justify-between items-center py-4">
-            
-            <div className="flex items-center">
-                <a href="index.html" className="flex items-center space-x-3">
-                    <img src={logo} className="h-16" alt="Aorta Plus Logo" />
-                </a>
-            </div>
+    <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-5 pt-3 sm:pt-4">
+      <div className="max-w-[1280px] mx-auto flex items-center justify-between gap-3">
+        {/* Logo pill */}
+        <Link
+          to="/"
+          className="flex items-center gap-2 bg-white rounded-full pl-2 pr-5 py-1.5 shadow-pill border border-line"
+        >
+          <span className="w-9 h-9 rounded-full bg-ink flex items-center justify-center overflow-hidden">
+            <img src={logo} alt="Aorta Plus" className="w-7 h-7 object-contain brightness-0 invert" />
+          </span>
+          <span className="leading-none">
+            <span className="block font-extrabold tracking-tight text-[17px]">Aorta Plus</span>
+            <span className="block text-[10px] uppercase tracking-[0.18em] text-neutral-500 font-semibold">
+              Poliklinika · 1996
+            </span>
+          </span>
+        </Link>
 
-            
-            <div className="hidden lg:flex items-center space-x-12">
-                <Link to="/" className="nav-link group">
-                    <span className="text-gray-800 font-semibold group-hover:text-[#01ba5b] transition-colors duration-300">Kryefaqja</span>
-                    <div className="h-0.5 w-0 group-hover:w-full bg-[#01ba5b] transition-all duration-300"></div>
-                </Link>
-                <a href="#Sherbimet" onClick={(e) => handleScroll(e, '#Sherbimet')} className="nav-link group">
-                    <span className="text-gray-800 font-semibold group-hover:text-[#01ba5b] transition-colors duration-300">Shërbimet</span>
-                    <div className="h-0.5 w-0 group-hover:w-full bg-[#01ba5b] transition-all duration-300"></div>
-                </a>
-                <a href="#Reth" onClick={(e) => handleScroll(e, '#Reth')} className="nav-link group">
-                    <span className="text-gray-800 font-semibold group-hover:text-[#01ba5b] transition-colors duration-300">Rreth Nesh</span>
-                    <div className="h-0.5 w-0 group-hover:w-full bg-[#01ba5b] transition-all duration-300"></div>
-                </a>
-                <a href="#Mjek" onClick={(e) => handleScroll(e, '#Mjek')} className="nav-link group">
-                    <span className="text-gray-800 font-semibold group-hover:text-[#01ba5b] transition-colors duration-300">Mjekët</span>
-                    <div className="h-0.5 w-0 group-hover:w-full bg-[#01ba5b] transition-all duration-300"></div>
-                </a>
-            </div>
+        {/* Center pill nav */}
+        <nav className="hidden lg:flex items-center gap-1 bg-white rounded-full p-1.5 shadow-pill border border-line">
+          {LINKS.map((l, i) => (
+            <a
+              key={l.label}
+              href={l.id}
+              onClick={(e) => go(e, l.id)}
+              className={`px-5 py-2.5 rounded-full text-[14px] font-semibold transition-all duration-300 ${
+                i === 0
+                  ? "bg-white border border-ink text-ink"
+                  : "text-neutral-600 hover:text-ink hover:bg-cream"
+              }`}
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
 
-            
-            <div className="hidden lg:flex items-center space-x-6">
-                <div className="flex items-center space-x-2">
-                    <svg className="w-5 h-5 text-[#01ba5b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <span className="text-gray-600 text-sm">E Hënë-Shtunë (08:00-21:00)</span>
-                </div>
-                <a href="#Konk" className="bg-[#01ba5b] text-white px-6 py-2.5 rounded-full font-semibold hover:bg-blue-400 transition duration-300 transform hover:scale-105">
-                    Kontakt
-                </a>
-            </div>
-
-            <div className="lg:hidden">
-                <button 
-                  id="mobile-menu-button" 
-                  className="text-gray-600 hover:text-[#01ba5b] focus:outline-none"
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path 
-                          className="mobile-menu-icon" 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          strokeWidth="2" 
-                          d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-                        />
-                    </svg>
-                </button>
-            </div>
+        {/* Right */}
+        <div className="flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-2 bg-white rounded-full px-4 py-2.5 border border-line text-[12px] font-semibold text-neutral-600">
+            <span className="w-2 h-2 rounded-full bg-mint animate-pulse" />
+            Hapur · 08:00 – 21:00
+          </div>
+          <a
+            href="#rezervo"
+            onClick={(e) => go(e, "#rezervo")}
+            className="hidden sm:inline-flex items-center gap-2 bg-ink text-white rounded-full px-6 py-3 text-[14px] font-bold hover:bg-mint-dark transition-colors duration-300"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Rezervo Online
+          </a>
+          <button
+            onClick={() => setOpen(!open)}
+            aria-label="Menu"
+            className="lg:hidden w-12 h-12 rounded-full bg-ink text-white flex items-center justify-center"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={open ? "M6 18L18 6M6 6l12 12" : "M4 7h16M4 12h16M4 17h16"} />
+            </svg>
+          </button>
         </div>
-    </div>
+      </div>
 
-    
-    <div id="mobile-menu" className={`lg:hidden bg-white border-t border-gray-100 ${isMobileMenuOpen ? '' : 'hidden'}`}>
-        <div className="container mx-auto px-4 py-4 space-y-4">
-            <Link to="/" className="block text-gray-800 font-semibold hover:text-[#01ba5b] transition-colors duration-300">Kryefaqja</Link>
-            <a href="#Sherbimet" onClick={(e) => handleScroll(e, '#Sherbimet')} className="block text-gray-800 font-semibold hover:text-[#01ba5b] transition-colors duration-300">Shërbimet</a>
-            <a href="#Reth" onClick={(e) => handleScroll(e, '#Reth')} className="block text-gray-800 font-semibold hover:text-[#01ba5b] transition-colors duration-300">Rreth Nesh</a>
-            <a href="#Mjek" onClick={(e) => handleScroll(e, '#Mjek')} className="block text-gray-800 font-semibold hover:text-[#01ba5b] transition-colors duration-300">Mjekët</a>
-            <div className="pt-4 border-t border-gray-100">
-                <div className="flex items-center space-x-2 mb-4">
-                    <svg className="w-5 h-5 text-[#01ba5b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <span className="text-gray-600 text-sm">E Hënë-Shtunë (08:00-21:00)</span>
-                </div>
-                <a href="#Konk" className="block text-center bg-[#01ba5b] text-white px-6 py-2.5 rounded-full font-semibold hover:bg-blue-400 transition duration-300">
-                    Kontakt
-                </a>
-            </div>
+      {/* Mobile menu */}
+      {open && (
+        <div className="lg:hidden max-w-[1280px] mx-auto mt-2 bg-white rounded-[24px] border border-line shadow-soft p-3">
+          {LINKS.map((l) => (
+            <a
+              key={l.label}
+              href={l.id}
+              onClick={(e) => go(e, l.id)}
+              className="block px-5 py-3.5 rounded-2xl font-bold text-[16px] hover:bg-cream transition"
+            >
+              {l.label}
+            </a>
+          ))}
+          <a
+            href="#rezervo"
+            onClick={(e) => go(e, "#rezervo")}
+            className="mt-2 flex items-center justify-center gap-2 bg-ink text-white rounded-2xl px-5 py-4 font-bold"
+          >
+            Rezervo Online
+          </a>
         </div>
-    </div>
-</nav>
+      )}
+    </header>
   );
 }
-
 
 export default Navbar;
